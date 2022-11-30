@@ -1,0 +1,34 @@
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  creationTimestamp: null
+  name: cj-vannevar-1-1
+spec:
+  jobTemplate:
+    metadata:
+      creationTimestamp: null
+      name: cj-vannevar-1-1
+    spec:      
+      template:
+        metadata:
+          creationTimestamp: null
+        spec:
+          containers:
+          - image: cj-vannevar-1-1:latest
+            name: cj-vannevar-1-1
+            # this policy is set to "IfNotPresent" because we use
+            # Minikube locally on our machine based on the sync between
+            # the Minikube Docker service and the local machine Docker service (your laptop)
+            #
+            # if this was a cloud deployment with a private Docker registry
+            # then this probably would probably be "Always"
+            # (always pull the image before running the Docker container)
+            imagePullPolicy: IfNotPresent # Never # IfNotPresent
+          restartPolicy: OnFailure
+  # https://crontab.guru/#*/2_*_*_*_*
+  # at every 2nd minute (30 times per hour)
+  schedule: '*/2 * * * *'
+  successfulJobsHistoryLimit: 2 # retained pods
+  failedJobsHistoryLimit: 2 # retained pods
+status: {}

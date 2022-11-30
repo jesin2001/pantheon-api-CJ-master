@@ -1,0 +1,2 @@
+disr - micro services to pull data via customer api and push data to s3 bucket
+pantheon api - containerization of disr micro services and deposit those containers to kubernetes (k8s) orchistration service for scheduling.

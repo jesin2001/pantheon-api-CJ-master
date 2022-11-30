@@ -1,0 +1,28 @@
+https://kubernetes.io/docs/tutorials/hello-minikube/#create-a-deployment
+
+https://www.google.com/search?client=firefox-b-1-d&q=can+i+schedule+a+job+in+minikube#fpstate=ive&vld=cid:4666169d,vid:-ng0BTXlaiU
+
+minikube image load vannevar-cj-i:latest
+vannevar-cj-1-1
+
+run
+minikube start
+in its own ps 
+run
+minikube dashboard
+in its own ps
+
+minikube image ls | Select-String vannevar-cj
+make kube-deploy
+Get-ExecutionPolicy If it returns Restricted
+Set-ExecutionPolicy AllSigned
+
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+
+choco install make
+
+make kube-lint
+
+make kube-clean-delete
+
+
